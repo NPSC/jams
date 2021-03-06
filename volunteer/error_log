@@ -1,0 +1,15 @@
+[28-Jun-2018 14:28:46 America/Chicago] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000]: General error: 1615 Prepared statement needs to be re-prepared' in /home2/jamskeny/public_html/hhk/volunteer/VolAction.php:190
+Stack trace:
+#0 /home2/jamskeny/public_html/hhk/volunteer/VolAction.php(190): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home2/jamskeny/public_html/hhk/volunteer/VolAction.php on line 190
+[01-Jul-2018 13:24:36 America/Chicago] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000]: General error: 1615 Prepared statement needs to be re-prepared' in /home2/jamskeny/public_html/hhk/volunteer/VolAction.php:190
+Stack trace:
+#0 /home2/jamskeny/public_html/hhk/volunteer/VolAction.php(190): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home2/jamskeny/public_html/hhk/volunteer/VolAction.php on line 190
+[13-Jul-2018 20:01:11 America/Chicago] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000]: General error: 1615 Prepared statement needs to be re-prepared' in /home2/jamskeny/public_html/hhk/volunteer/VolAction.php:190
+Stack trace:
+#0 /home2/jamskeny/public_html/hhk/volunteer/VolAction.php(190): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home2/jamskeny/public_html/hhk/volunteer/VolAction.php on line 190
