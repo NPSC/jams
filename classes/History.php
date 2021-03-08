@@ -46,7 +46,7 @@ class History {
             throw new Hk_Exception_InvalidArguement("Database view name must be defined.");
         }
 
-        $query = "select * from $view";
+        $query = "select * from $view;";
         $stmt = $dbh->query($query);
 
         $table = new HTMLTable();

@@ -17,20 +17,38 @@ function initPDO($dbName = '') {
         die('<br/>Missing Database Initialization (initPDO)<br/>');
     }
 
+    $dbuName = $ssn->databaseUName;
+    $dbPw = $ssn->databasePWord;
+    $dbHost = $ssn->databaseURL;
+    $dbName = $ssn->databaseName;
+    
     try {
-        $dbh = new PDO(
-                "mysql:host=".$ssn->databaseURL.";dbname=".($dbName == '' ? $ssn->databaseName : $dbName).";charset=Latin1",
-                $ssn->databaseUName,
-                $ssn->databasePWord,
-                array(PDO::ATTR_PERSISTENT => true)
-                );
+    	$dsn = "mysql:host=$dbHost;dbname=$dbName;charset=utf8mb4";
+    	$options = [
+    			PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+    			PDO::ATTR_EMULATE_PREPARES   => true,
+    	];
+    	
+    	$dbh = new PDO($dsn, $dbuName, $dbPw, $options);
+    	
+    	$dbh->exec("SET SESSION wait_timeout = 3600;");
+    	
+    	// Syncromize PHP and mySQL timezones
+    	syncTimeZone($dbh);
+    	
+//         $dbh = new PDO(
+//                 "mysql:host=".$ssn->databaseURL.";dbname=".($dbName == '' ? $ssn->databaseName : $dbName).";charset=Latin1",
+//                 $ssn->databaseUName,
+//                 $ssn->databasePWord,
+//                 array(PDO::ATTR_PERSISTENT => true)
+//                 );
 
-        $dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, true);
-        $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $dbh->setAttribute(PDO::ATTR_CASE, PDO::CASE_NATURAL);
+//         $dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+//         $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+//         $dbh->setAttribute(PDO::ATTR_CASE, PDO::CASE_NATURAL);
 
-        // Syncromize PHP and mySQL timezones
-        syncTimeZone($dbh);
+//         // Syncromize PHP and mySQL timezones
+//         syncTimeZone($dbh);
 
     } catch (PDOException $e) {
         print "Error!: " . $e->getMessage() . "<br/>";
@@ -139,17 +157,17 @@ function prepareEmail(Config_Lite $config) {
 // This is named backwards.  I'll start the new name, but it may take a while for all the code to comply
 function addslashesextended(&$arr_r) {
 
-    if (get_magic_quotes_gpc()) {
-        array_walk_recursive($arr_r, 'stripslashes_gpc');
+//     if (get_magic_quotes_gpc()) {
+//         array_walk_recursive($arr_r, 'stripslashes_gpc');
 
-    }
+//     }
 }
 function stripSlashesExtended(&$arr_r) {
 
-    if (get_magic_quotes_gpc()) {
-        array_walk_recursive($arr_r, 'stripslashes_gpc');
+//     if (get_magic_quotes_gpc()) {
+//         array_walk_recursive($arr_r, 'stripslashes_gpc');
 
-    }
+//     }
 }
 
 
@@ -249,10 +267,14 @@ function getYearOptionsMarkup($slctd, $startYear, $fyMonths) {
 }
 
 
-function getKey() { return "017d609a4b2d8910685595C8";  }
+function getKey()
+{
+	return "017d609a4b2d8910685595C8df";
+}
 
-function getIV() {
-    return "fYfhHeDm";
+function getIV()
+{
+	return "fYfhHeDmf j98UUy4";
 }
 
 

@@ -25,9 +25,6 @@ $testVersion = $wInit->testVersion;
 
 $menuMarkup = $wInit->generatePageMenu();
 
-$uS = Session::getInstance();
-
-
 $recHistory = History::getMemberHistoryMarkup($dbh);
 $stuHistory = History::getStudentHistoryMarkup($dbh);
 
